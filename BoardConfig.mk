@@ -149,6 +149,9 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 USE_OPENGL_RENDERER := true
 
+# DRM
+TARGET_ENABLE_MEDIADRM_64 := true
+
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH ?= vendor/qcom/opensource/cryptfs_hw
@@ -162,6 +165,10 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /dsp:/vendor/dsp \
+    /firmware:/vendor/firmware_mnt \
+    /persist:/mnt/vendor/persist
 
 # FM
 BOARD_HAVE_QCOM_FM := true
@@ -208,6 +215,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 # RIL
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
+DISABLE_RILD_OEM_HOOK := false
 
 # SELinux
 #include device/qcom/sepolicy/sepolicy.mk
